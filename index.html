@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HAIFLOPS | 하이플롭스</title>
+<meta name="description" content="주식회사 하이플롭스(HAIFLOPS Inc.)는 모바일·온라인 게임을 만드는 게임 개발 스튜디오입니다.">
+<meta property="og:title" content="HAIFLOPS | 하이플롭스">
+<meta property="og:description" content="Game development studio based in Seongnam, Korea.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0d17;
+    --bg-2: #12152a;
+    --text: #eef0ff;
+    --muted: #9aa0c3;
+    --line: #262a48;
+    --accent: #7c5cff;
+    --accent-2: #22d3ee;
+    --card: #151936;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Noto Sans KR", system-ui, sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(11, 13, 23, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.04em; }
+  .logo span { color: var(--accent); }
+  .nav ul { display: flex; gap: 28px; list-style: none; font-size: 15px; color: var(--muted); }
+  .nav ul a:hover { color: var(--text); }
+  .lang { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 13px; color: var(--muted); cursor: pointer; background: none; }
+  .lang:hover { color: var(--text); border-color: var(--muted); }
+
+  .hero { position: relative; padding: 140px 0 120px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: -40% -20% auto auto; width: 720px; height: 720px;
+    background: radial-gradient(circle, rgba(124, 92, 255, 0.35), transparent 65%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ""; position: absolute; left: -200px; bottom: -300px; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.18), transparent 65%);
+    pointer-events: none;
+  }
+  .eyebrow { font-family: "Space Grotesk", sans-serif; color: var(--accent-2); font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; }
+  .hero h1 { font-size: clamp(40px, 7vw, 76px); font-weight: 900; line-height: 1.15; margin: 18px 0 24px; letter-spacing: -0.02em; }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p { max-width: 560px; color: var(--muted); font-size: 18px; }
+  .btn {
+    display: inline-block; margin-top: 36px; padding: 14px 28px; border-radius: 12px;
+    background: var(--accent); color: #fff; font-weight: 700; transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(124, 92, 255, 0.4); }
+
+  section { padding: 100px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 900; margin-bottom: 16px; letter-spacing: -0.01em; }
+  .lead { color: var(--muted); max-width: 640px; margin-bottom: 48px; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 32px 28px; }
+  .card .icon {
+    width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; font-size: 24px;
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.25), rgba(34, 211, 238, 0.2)); margin-bottom: 20px;
+  }
+  .card h3 { font-size: 19px; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 15px; }
+
+  .games { background: var(--bg-2); }
+  .coming {
+    border: 1px dashed var(--line); border-radius: 18px; padding: 64px 24px; text-align: center; color: var(--muted);
+  }
+  .coming strong { display: block; font-family: "Space Grotesk", sans-serif; font-size: 28px; color: var(--text); margin-bottom: 8px; }
+
+  .info { display: grid; grid-template-columns: 160px 1fr; gap: 14px 24px; font-size: 15px; }
+  .info dt { color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0; color: var(--muted); font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  [data-lang="en"] .ko, [data-lang="ko"] .en { display: none; }
+
+  @media (max-width: 760px) {
+    .nav ul { display: none; }
+    .hero { padding: 96px 0 80px; }
+    section { padding: 72px 0; }
+    .grid { grid-template-columns: 1fr; }
+    .info { grid-template-columns: 1fr; gap: 2px; }
+    .info dd { margin-bottom: 14px; }
+  }
+</style>
+</head>
+<body data-lang="ko">
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">HAIFLOPS<span>.</span></a>
+    <ul>
+      <li><a href="#about"><span class="ko">회사 소개</span><span class="en">About</span></a></li>
+      <li><a href="#games"><span class="ko">게임</span><span class="en">Games</span></a></li>
+      <li><a href="#company"><span class="ko">회사 정보</span><span class="en">Company</span></a></li>
+    </ul>
+    <button class="lang" id="langBtn" type="button">EN</button>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Game Development Studio</div>
+      <h1 class="ko">즐거움을 만드는<br><em>하이플롭스</em></h1>
+      <h1 class="en">We make<br><em>games that play.</em></h1>
+      <p class="ko">하이플롭스는 누구나 쉽게 즐길 수 있는 모바일·온라인 게임을 만드는 게임 개발 스튜디오입니다.</p>
+      <p class="en">HAIFLOPS is a game development studio creating mobile and online games anyone can pick up and enjoy.</p>
+      <a href="#games" class="btn"><span class="ko">게임 보러 가기</span><span class="en">See our games</span></a>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <h2 class="ko">우리가 하는 일</h2>
+      <h2 class="en">What we do</h2>
+      <p class="lead ko">기획, 개발, 아트까지 작은 팀이 직접 만들고 직접 서비스합니다.</p>
+      <p class="lead en">A small team that designs, builds, draws and runs its own games.</p>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🎮</div>
+          <h3 class="ko">게임 개발</h3><h3 class="en">Game Development</h3>
+          <p class="ko">모바일과 PC 플랫폼에서 즐길 수 있는 게임을 개발합니다.</p>
+          <p class="en">Games for mobile and PC platforms.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🎨</div>
+          <h3 class="ko">아트 &amp; 디자인</h3><h3 class="en">Art &amp; Design</h3>
+          <p class="ko">개성 있는 캐릭터와 세계관을 직접 디자인합니다.</p>
+          <p class="en">Original characters and worlds, designed in-house.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🌏</div>
+          <h3 class="ko">글로벌 서비스</h3><h3 class="en">Global Publishing</h3>
+          <p class="ko">Google Play, App Store, Steam을 통해 전 세계에 서비스합니다.</p>
+          <p class="en">Shipping worldwide on Google Play, the App Store and Steam.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="games" class="games">
+    <div class="wrap">
+      <h2 class="ko">게임</h2>
+      <h2 class="en">Games</h2>
+      <p class="lead ko">첫 번째 게임을 준비하고 있습니다.</p>
+      <p class="lead en">Our first title is in development.</p>
+      <div class="coming">
+        <strong>Coming Soon</strong>
+        <span class="ko">곧 공개합니다. 조금만 기다려 주세요.</span>
+        <span class="en">Stay tuned.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="company">
+    <div class="wrap">
+      <h2 class="ko">회사 정보</h2>
+      <h2 class="en">Company</h2>
+      <dl class="info ko">
+        <dt>상호</dt><dd>주식회사 하이플롭스</dd>
+        <dt>대표이사</dt><dd>박영찬</dd>
+        <dt>주소</dt><dd>경기도 성남시 분당구 내정로173번길 11, 양지마을상가 603동 2층 228-비01호 (13597)</dd>
+      </dl>
+      <dl class="info en">
+        <dt>Company</dt><dd>HAIFLOPS Inc.</dd>
+        <dt>CEO</dt><dd>Youngchan Park</dd>
+        <dt>Address</dt><dd>Rm 228-B01, 2F, Yangji Maeul Shopping Center Bldg 603, 11, Naejeong-ro 173beon-gil, Bundang-gu, Seongnam-si, Gyeonggi-do 13597, Republic of Korea</dd>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> HAIFLOPS Inc. All rights reserved.</span>
+    <span class="ko">주식회사 하이플롭스</span><span class="en">Seongnam, Republic of Korea</span>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('langBtn');
+  function setLang(lang) {
+    document.body.dataset.lang = lang;
+    document.documentElement.lang = lang;
+    btn.textContent = lang === 'ko' ? 'EN' : '한국어';
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+  let saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  setLang(saved || (navigator.language.startsWith('ko') ? 'ko' : 'en'));
+  btn.addEventListener('click', () => setLang(document.body.dataset.lang === 'ko' ? 'en' : 'ko'));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
